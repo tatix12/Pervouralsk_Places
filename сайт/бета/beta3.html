@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сайт с переключением темы</title>
+    <style>
+        /* Базовые стили */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        /* Темы */
+        body.light-theme {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        body.dark-theme {
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        header {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px 20px;
+            background-color: #f1f1f1;
+        }
+
+        .theme-toggle {
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            background: none;
+            border: none;
+            font-size: 16px;
+        }
+
+        .theme-toggle span {
+            margin-left: 8px;
+        }
+
+        .theme-toggle img {
+            width: 20px;
+            height: 20px;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            background-color: #f1f1f1;
+            border-top: 1px solid #ccc;
+        }
+
+        footer a {
+            color: inherit;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body class="light-theme">
+    <header>
+        <button class="theme-toggle" id="themeToggle">
+            <img src="https://img.icons8.com/ios-filled/50/000000/sun--v1.png" alt="Theme icon" id="themeIcon">
+            <span>Переключить тему</span>
+        </button>
+    </header>
+
+    <main>
+        <h1>Добро пожаловать на сайт</h1>
+        <p>Это пример страницы с переключателем темы и футером.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Все права защищены. <a href="#">Пользовательское соглашение</a></p>
+        <p>Контакты: <a href="mailto:example@email.com">Email</a> | <a href="tel:+1234567890">Телефон</a></p>
+    </footer>
+
+    <script>
+        // Логика переключения темы
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', () => {
+            if (body.classList.contains('light-theme')) {
+                body.classList.replace('light-theme', 'dark-theme');
+                themeIcon.src = "https://img.icons8.com/ios-filled/50/ffffff/moon-symbol.png"; // Иконка луны
+            } else {
+                body.classList.replace('dark-theme', 'light-theme');
+                themeIcon.src = "https://img.icons8.com/ios-filled/50/000000/sun--v1.png"; // Иконка солнца
+            }
+        });
+    </script>
+</body>
+</html>

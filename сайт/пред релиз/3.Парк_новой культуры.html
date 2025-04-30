@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Парк Новой Культуры - Первоуральск</title>
+    <link href="./главная_files/css2" rel="stylesheet">
+    <style>
+        /* Плавные анимации */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-bg-color);
+            color: var(--text-color);
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        /* Шапка сайта */
+        header {
+            background-color: var(--accent-color);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+            transition: background-color 0.5s ease;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        /*поиск*/
+        .search-bar {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .search-bar input {
+            padding: 8px 35px 8px 10px;
+            width: 250px;
+            border: none;
+            border-radius: 20px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .search-bar input:focus {
+            outline: none;
+            box-shadow: 0 0 5px var(--input-shadow);
+        }
+
+        .search-bar img {
+        position: absolute;
+        right: 10px;
+        width: 18px;
+        height: 18px;
+        }
+
+        nav a {
+            text-decoration: none;
+            margin-left: 15px;
+            color: #fff;
+            transition: opacity 0.3s ease;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        /* Контент */
+        .place-details {
+            margin: 20px;
+            transition: opacity 0.5s ease;
+            margin-left: 100px;
+            margin-right: 100px;
+            margin-bottom: 100px;
+        }
+
+        .place-details h1 {
+            font-size: 32px;
+            margin-bottom: 10px;
+            transition: color 0.5s ease;
+        }
+
+        .place-details p {
+            font-size: 16px;
+            color: var(--text-a-color);
+            transition: color 0.5s ease;
+        }
+
+        .place-details img {
+            width: 70%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .place-details img:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .place-images {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .place-images img {
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .place-images img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .map {
+            height: 400px;
+            width: 67%;
+            background-color: var(--map-bg);
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .map:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .reviews {
+            margin-top: 40px;
+            color: var(--text-color);
+            transition: color 0.5s ease;
+        }
+
+        .review {
+            background-color: var(--review-bg);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            color: var(--text-color);
+            transition: transform 0.3s ease, background-color 0.5s ease, box-shadow 0.3s ease;
+        }
+
+        .review:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        /*футер*/
+        .footer {
+            text-align: center;
+            padding: 15px 0;
+            background-color: var(--footer-bg);
+            color: var(--footer-text);
+            bottom: 0;
+            position: fixed;
+            width: 100%;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #008000;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer a:hover {
+            opacity: 0.8;
+        }
+
+        /* Темы */
+        :root {
+            --bg-color: #FFFFFF;
+            --bg-bg-color: #FFFFFF;
+            --text-color: #000000;
+            --text-a-color: #2e2e2e;
+            --footer-bg: #F1F1F1;
+            --footer-text: #000000;
+            --button-bg: #E0E0E0;
+            --button-hover: #D0D0D0;
+            --accent-color: #008000;
+            --review-bg: #FFFFFF;
+            --map-bg: #EEEEEE;
+            --input-shadow: rgba(0, 128, 0, 0.7);
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1a1a1a;
+            --text-color: #FFFFFF;
+            --text-a-color: #969696;
+            --footer-bg: #1a1a1a;
+            --footer-text: #FFFFFF;
+            --button-bg: #404040;
+            --button-hover: #666666;
+            --bg-bg-color: #111111;
+            --accent-color: #008000;
+            --review-bg: #2a2a2a;
+            --map-bg: #333333;
+            --input-shadow: rgba(0, 192, 0, 0.7);
+        }
+
+        .theme-toggle-btn {
+            padding: 10px 15px;
+            background-color: var(--button-bg);
+            border: none;
+            border-radius: 5px;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .theme-toggle-btn:hover {
+            background-color: var(--button-hover);
+            transform: scale(1.05);
+        }
+
+        /* Карусель фото */
+        .slider-container {
+            position: relative;
+            width: 90%;
+            height: 50%;
+            max-height: 800px;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            margin: auto;
+        }
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            aspect-ratio: 16 / 9;
+            vertical-align: center;
+        }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            vertical-align: center;
+            aspect-ratio: 16 / 9;
+        }
+        .thumbnails {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .thumbnail {
+            width: 200px;
+            height: 100px;
+            margin: 8px;
+            cursor: pointer;
+        }
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .nav-button {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .prev { left: 10px; }
+        .next { right: 10px; }
+        
+        /*Описание рядом с картой*/
+        .description {
+            width: 30%;
+            background-color: var(--review-bg);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.5s ease, transform 0.3s ease;
+        }
+        .description:hover {
+            background-color: var(--button-hover);
+            transform: scale(1.05);
+        }
+        .description h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .description p {
+            font-size: 16px;
+            color: var(--text-a-color);
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch; /* Растягиваем элементы на одинаковую высоту */
+            margin: 20px 100px;
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a class="logo" href="C:\Users\sasha\OneDrive\Рабочий стол\сайт\1.Главная_стр.html">Полезный отдых</a>
+        </nav>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Поиск по названию...">
+            <img src="./лупа/лупа копия.png" alt="Лупа"></img>
+        </div>
+        <button id="themeToggle" class="theme-toggle-btn">
+            <span class="theme-text">Тёмная тема</span>
+        </button>
+    </header>
+
+    <div class="place-details">
+        <h1>Парк Новой Культуры</h1>
+        
+        <!-- Галерея фотографий -->
+        <div class="slider-container">
+            <div class="slider" id="slider">
+                <div class="slide"><img src="./фото/Парк Новой Культуры/photo_2019-07-10_13-45-50.jpg"></div>
+                <div class="slide"><img src="./фото/Парк Новой Культуры/original.jpg"></div>
+                <div class="slide"><img src="./фото/Парк Новой Культуры/Elka2.jpg"></div>
+                <div class="slide"><img src="./фото/Парк Новой Культуры/IMG_2724.jpg"></div>
+            </div>
+
+                <!-- Добавьте больше элементов по необходимости -->
+
+                <button class="nav-button prev" onclick="prevSlide()">&#10094;</button>
+                <button class="nav-button next" onclick="nextSlide()">&#10095;</button>
+        </div>
+        
+        <!--Фотографии снизу-->
+
+        <div class="thumbnails">
+            <div class="thumbnail" onclick="goToSlide(0)"><img src="./фото/Парк Новой Культуры/photo_2019-07-10_13-45-50.jpg"></div>
+            <div class="thumbnail" onclick="goToSlide(1)"><img src="./фото/Парк Новой Культуры/original.jpg"></div>
+            <div class="thumbnail" onclick="goToSlide(2)"><img src="./фото/Парк Новой Культуры/Elka2.jpg"></div>
+            <div class="thumbnail" onclick="goToSlide(3)"><img src="./фото/Парк Новой Культуры/IMG_2724.jpg"></div>
+        </div>
+        <div class="container">
+            <!-- Карта -->
+            <div class="map">
+                <!-- Встраиваем карту с Yandex Maps -->
+                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3A4e82dce9a4988d4edd62fefb917a1e6ed4561f0ead9d7151f35ae7a0435e857d&amp;width=100%25&amp;height=100%25&amp;lang=ru_RU&amp;scroll=true"></script>
+            </div>
+            <!--Описание-->
+            <div class="description">
+                <h2>Описание</h2>
+                <p>Это место подойдет для всей семьи. В тёплое время года здесь можно гулять по тенистым аллеям, кататься на велосипеде или самокате, а также наслаждаться организованными культурными мероприятиями. Зимой парк превращается в зимнюю сказку: здесь открыты горки для катания на санках, лыжные маршруты и уютные места для отдыха. Для любителей спокойных прогулок — отдалённые дорожки вдали от городской суеты.</p>
+            </div>
+        </div>
+        <!-- Отзывы -->
+        <div class="reviews">
+            <div class="review">
+                <h3>Отзыв от Иван</h3>
+                <p>Это место отличное для активных прогулок! Прекрасные виды и хорошая инфраструктура для отдыха на природе.</p>
+            </div>
+            <div class="review">
+                <h3>Отзыв от Ольга</h3>
+                <p>Очень живописное место, особенно в осенний период. Здесь действительно можно насладиться тишиной.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <a href="#">Помощь, сообщение о неполадках</a>
+    </div>
+
+    <script>
+        const searchInput = document.getElementById('search');
+        const places = document.querySelectorAll('.place-item');
+
+        // Фильтр по названию
+        searchInput.addEventListener('input', function () {
+            const query = searchInput.value.toLowerCase();
+            places.forEach(place => {
+                const name = place.querySelector('h4').textContent.toLowerCase();
+                if (name.includes(query)) {
+                    place.style.display = 'flex';
+                } else {
+                    place.style.display = 'none';
+                }
+            });
+        });
+
+        // Сортировка по популярности
+        function sortByPopularity() {
+            // Пример сортировки по популярности
+        }
+
+        // Сортировка по оценке
+        function sortByRating() {
+            // Пример сортировки по рейтингу
+        }
+
+        // Логика переключения темы
+        const themeToggleButton = document.getElementById('themeToggle');
+        const body = document.body;
+
+        themeToggleButton.addEventListener('click', () => {
+            const isDarkMode = body.getAttribute('data-theme') === 'dark';
+            if (isDarkMode) {
+                body.setAttribute('data-theme', 'light');
+                themeToggleButton.textContent = 'Тёмная тема';
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeToggleButton.textContent = 'Светлая тема';
+            }
+        });
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            body.setAttribute('data-theme', savedTheme);
+            themeToggleButton.textContent = savedTheme === 'dark' ? 'Светлая тема' : 'Тёмная тема';
+        }
+
+        themeToggleButton.addEventListener('click', () => {
+            const currentTheme = body.getAttribute('data-theme');
+            localStorage.setItem('theme', currentTheme);
+        });
+
+        // Карусель фото
+        let currentIndex = 0;
+        const slides = document.querySelectorAll('.slide');
+        const slider = document.getElementById('slider');
+
+        function updateSlider() {
+            slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+        
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length;
+            updateSlider();
+        }
+        
+        function prevSlide() {
+            currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            updateSlider();
+        }
+        
+        function goToSlide(index) {
+            currentIndex = index;
+            updateSlider();
+        }
+    </script>
+</body>
+</html>
